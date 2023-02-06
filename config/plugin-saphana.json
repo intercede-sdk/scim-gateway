@@ -1,0 +1,94 @@
+{
+  "scimgateway": {
+    "port": 8884,
+    "localhostonly": false,
+    "payloadSize": null,
+    "scim": {
+      "version": "2.0",
+      "customSchema": null,
+      "skipTypeConvert": false,
+      "usePutSoftSync": false
+    },
+    "log": {
+      "loglevel": {
+        "file": "debug",
+        "console": "error"
+      },
+      "customMasking": null
+    },
+    "auth": {
+      "basic": [
+        {
+          "username": "gwadmin",
+          "password": "password",
+          "readOnly": false,
+          "baseEntities": []
+        }
+      ],
+      "bearerToken": [
+        {
+          "token": null,
+          "readOnly": false,
+          "baseEntities": []
+        }
+      ],
+      "bearerJwtAzure": [
+        {
+          "tenantIdGUID": null,
+          "readOnly": false,
+          "baseEntities": []
+        }
+      ],
+      "bearerJwt": [
+        {
+          "secret": null,
+          "publicKey": null,
+          "options": {
+            "issuer": null
+          },
+          "readOnly": false,
+          "baseEntities": []
+        }
+      ],
+      "bearerOAuth": [
+        {
+          "client_id": null,
+          "client_secret": null,
+          "readOnly": false,
+          "baseEntities": []
+        }
+      ]
+    },
+    "certificate": {
+      "key": null,
+      "cert": null,
+      "ca": null,
+      "pfx": {
+        "bundle": null,
+        "password": null
+      }
+    },
+    "ipAllowList": [],
+    "emailOnError": {
+      "smtp": {
+        "enabled": false,
+        "host": null,
+        "port": 587,
+        "proxy": null,
+        "authenticate": true,
+        "username": null,
+        "password": null,
+        "sendInterval": 15,
+        "to": null,
+        "cc": null
+      }
+    }
+  },
+  "endpoint": {
+    "host": "hostname",
+    "port": 30015,
+    "username": "username",
+    "password": "password",
+    "saml_provider": "saml_provider_name"
+  }
+}
