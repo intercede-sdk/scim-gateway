@@ -1,0 +1,986 @@
+{
+	"info": {
+		"_postman_id": "5fe5bada-6420-488e-935f-39ef6f5d6a93",
+		"name": "SCIM gateway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23877104"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-loki}}/users",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users - myid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-myid}}/users",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-loki}}/users/bjensen",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"users",
+								"bjensen"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User - myid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-myid}}/users/3EB6F2B9-92AA-4D2D-AA79-513C41378132",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"users",
+								"3EB6F2B9-92AA-4D2D-AA79-513C41378132"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find person",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-loki}}/Users?filter=userName eq bjensen&startIndex=1&count=100",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"Users"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "userName eq bjensen"
+								},
+								{
+									"key": "startIndex",
+									"value": "1"
+								},
+								{
+									"key": "count",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find person - myid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-myid}}/Users?filter=userName eq bjensen&startIndex=1&count=100",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"Users"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "userName eq bjensen"
+								},
+								{
+									"key": "startIndex",
+									"value": "1"
+								},
+								{
+									"key": "count",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-loki}}/Users?filter=userName eq \"bjensen\"",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"Users"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "userName eq \"bjensen\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter users - myid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-myid}}/Users?filter=userName eq \"bjensen\"",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"Users"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "userName eq \"bjensen\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter users and get specific attributes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-loki}}/Users?filter=userName eq \"bjensen\"&attributes=userName,id,name.givenName",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"Users"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "userName eq \"bjensen\""
+								},
+								{
+									"key": "attributes",
+									"value": "userName,id,name.givenName"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter users and get specific attributes - myid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-myid}}/Users?filter=userName eq \"bjensen\"&attributes=userName,id,name.givenName",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"Users"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "userName eq \"bjensen\""
+								},
+								{
+									"key": "attributes",
+									"value": "userName,id,name.givenName"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"externalId\": \"Jane.doe\", \r\n    \"userName\": \"Jane.doe\", \r\n    \"name\": { \r\n        \"givenName\":\"Jane\", \r\n        \"familyName\":\"Doe\" \r\n    }, \r\n    \"emails\": [{ \r\n        \"primary\": true, \r\n        \"value\": \"jane.doe@example.com\" \r\n    }], \r\n    \"active\": true \r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-loki}}/users",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add User - myid",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"externalId\": \"Jane.doe\", \r\n    \"userName\": \"Jane.doe\", \r\n    \"name\": { \r\n        \"givenName\":\"Jane\", \r\n        \"familyName\":\"Doe\" \r\n    }, \r\n    \"emails\": [{ \r\n        \"primary\": true, \r\n        \"value\": \"jane.doe@example.com\" \r\n    }], \r\n    \"active\": true \r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-myid}}/users",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Person",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"userName\": \"test.user@example.local\",\r\n    \"name\": {\r\n        \"givenName\": \"Test\",\r\n        \"familyName\": \"User\"\r\n    },\r\n    \"emails\": [{\r\n        \"primary\": true,\r\n        \"value\": \"test.user@example.local\",\r\n        \"type\": \"work\"\r\n    }],\r\n    \"displayName\": \"Test User\",\r\n    \"locale\": \"en-US\",\r\n    \"externalId\": \"00ujl29u0le5T6Aj10h7\",\r\n    \"groups\": [],\r\n    \"password\": \"1mz050nq\",\r\n    \"active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-loki}}/users",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Person - myid",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"userName\": \"test.user@example.local\",\r\n    \"name\": {\r\n        \"givenName\": \"Test\",\r\n        \"familyName\": \"User\"\r\n    },\r\n    \"emails\": [{\r\n        \"primary\": true,\r\n        \"value\": \"test.user@example.local\",\r\n        \"type\": \"work\"\r\n    }],\r\n    \"displayName\": \"Test User\",\r\n    \"locale\": \"en-US\",\r\n    \"externalId\": \"00ujl29u0le5T6Aj10h7\",\r\n    \"groups\": [],\r\n    \"password\": \"1mz050nq\",\r\n    \"active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-myid}}/users",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"emails\": [{\r\n        \"value\": \"jane@doe.org\",\r\n        \"type\": \"home\"\r\n    }]\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-loki}}/users/Jane.doe",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"users",
+								"Jane.doe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit user - myid",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"emails\": [{\r\n        \"value\": \"jane@doe.org\",\r\n        \"type\": \"home\"\r\n    }]\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-myid}}/users/Jane.doe",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"users",
+								"Jane.doe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"emails\": [{\r\n        \"value\": \"jane@doe.org\",\r\n        \"type\": \"home\"\r\n    }]\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-loki}}/users/Jane.doe",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"users",
+								"Jane.doe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user - myid",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"emails\": [{\r\n        \"value\": \"jane@doe.org\",\r\n        \"type\": \"home\"\r\n    }]\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-myid}}/users/Jane.doe",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"users",
+								"Jane.doe"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Groups",
+			"item": [
+				{
+					"name": "Get Group",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/Groups/Admins",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"Groups",
+								"Admins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Group",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"displayName\": \"PettyOfficers\",\r\n    \"id\": \"PettyOfficers\",\r\n    \"members\": [],\r\n    \"schemas\": [\r\n        \"urn:ietf:params:scim:schemas:core:2.0:Group\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/groups",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"groups"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MyID Ops",
+			"item": [
+				{
+					"name": "Add Person",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"externalId\": \"Jane.doe\", \r\n    \"userName\": \"Jane.doe\", \r\n    \"name\": { \r\n        \"givenName\":\"Jane\", \r\n        \"familyName\":\"Doe\" \r\n    }, \r\n    \"emails\": [{ \r\n        \"primary\": true, \r\n        \"value\": \"jane.doe@example.com\" \r\n    }], \r\n    \"active\": true \r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-loki}}/users",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Person - myid",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"externalId\": \"Jane.doe\", \r\n    \"userName\": \"Jane.doe\", \r\n    \"name\": { \r\n        \"givenName\":\"Jane\", \r\n        \"familyName\":\"Doe\" \r\n    }, \r\n    \"emails\": [{ \r\n        \"primary\": true, \r\n        \"value\": \"jane.doe@example.com\" \r\n    }], \r\n    \"active\": true \r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-myid}}/users",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Person",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"emails\": [{\r\n        \"value\": \"jane@doe.org\",\r\n        \"type\": \"home\"\r\n    }]\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-loki}}/users/Jane.doe",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"users",
+								"Jane.doe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Person - myid",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"emails\": [{\r\n        \"value\": \"jane@doe.org\",\r\n        \"type\": \"home\"\r\n    }]\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-myid}}/users/Jane.doe",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"users",
+								"Jane.doe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Person",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-loki}}/users/Jane.doe",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"users",
+								"Jane.doe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Person - myid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-myid}}/users/3EB6F2B9-92AA-4D2D-AA79-513C41378132",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"users",
+								"3EB6F2B9-92AA-4D2D-AA79-513C41378132"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Person",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-loki}}/Users?filter=name.familyName eq \"Doe\"",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"Users"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "name.familyName eq \"Doe\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Person - myid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-myid}}/Users?filter=name.familyName eq \"Doe\"",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"Users"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "name.familyName eq \"Doe\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Disable Person",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"active\": false\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-loki}}/users/Jane.doe",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"users",
+								"Jane.doe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Disable Person - myid",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"active\": false\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-myid}}/users/Jane.doe",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"users",
+								"Jane.doe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enable Person",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"active\": true\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-loki}}/users/Jane.doe",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"users",
+								"Jane.doe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enable Person - myid",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"active\": true\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-myid}}/users/Jane.doe",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"users",
+								"Jane.doe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request Device ??",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Person",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"emails\": [{\r\n        \"value\": \"jane@doe.org\",\r\n        \"type\": \"home\"\r\n    }]\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-loki}}/users/Jane.doe",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"users",
+								"Jane.doe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Person - myid",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"emails\": [{\r\n        \"value\": \"jane@doe.org\",\r\n        \"type\": \"home\"\r\n    }]\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-myid}}/users/Jane.doe",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"users",
+								"Jane.doe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Configs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-loki}}/ServiceProviderConfigs",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"ServiceProviderConfigs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Configs - myid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-myid}}/ServiceProviderConfigs",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"ServiceProviderConfigs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Schemas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-loki}}/Schemas",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"Schemas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Schemas - myid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-myid}}/Schemas",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"Schemas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "password",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "gwadmin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server-myid",
+			"value": "http://localhost:8886",
+			"type": "string"
+		},
+		{
+			"key": "server-loki",
+			"value": "http://localhost:8880",
+			"type": "string"
+		}
+	]
+}

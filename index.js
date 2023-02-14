@@ -9,9 +9,9 @@
 // node-http-proxy for horizontal loadbalancing among hosts (or use nginx)
 //
 
-// const loki = require('./lib/plugin-loki')
+const loki = require('./lib/plugin-loki')
 // const mongodb = require('./lib/plugin-mongodb')
-const scim = require("./lib/plugin-scim");
+const scim = require('./lib/plugin-scim')
 // const forwardinc = require('./lib/plugin-forwardinc')
 // const mssql = require('./lib/plugin-mssql')
 // const saphana = require('./lib/plugin-saphana')  // prereq: npm install hdb --save
