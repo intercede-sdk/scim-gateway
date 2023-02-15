@@ -98,19 +98,6 @@
           "username": null,
           "password": null
         }
-      },
-      "clientA": {
-        "baseUrls": [
-          "https://react.domain31.local/rest.core/api"
-        ],
-        "scimVersion": "2.0",
-        "username": "gwadmin",
-        "password": "password",
-        "proxy": {
-          "host": null,
-          "username": null,
-          "password": null
-        }
       }
     }
   }
