@@ -601,13 +601,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{server-myid}}/users/Jane.doe",
+							"raw": "{{server-myid}}/users/75C10102-FF58-49B1-B93D-4D42C6AC521E",
 							"host": [
 								"{{server-myid}}"
 							],
 							"path": [
 								"users",
-								"Jane.doe"
+								"75C10102-FF58-49B1-B93D-4D42C6AC521E"
 							]
 						}
 					},
@@ -637,13 +637,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{server-myid}}/users/3EB6F2B9-92AA-4D2D-AA79-513C41378132",
+							"raw": "{{server-myid}}/users/75C10102-FF58-49B1-B93D-4D42C6AC521E",
 							"host": [
 								"{{server-myid}}"
 							],
 							"path": [
 								"users",
-								"3EB6F2B9-92AA-4D2D-AA79-513C41378132"
+								"75C10102-FF58-49B1-B93D-4D42C6AC521E"
 							]
 						}
 					},
@@ -655,7 +655,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{server-loki}}/Users?filter=name.familyName eq \"Doe\"",
+							"raw": "{{server-loki}}/Users?filter=userName eq \"Jane.doe\"",
 							"host": [
 								"{{server-loki}}"
 							],
@@ -665,7 +665,7 @@
 							"query": [
 								{
 									"key": "filter",
-									"value": "name.familyName eq \"Doe\""
+									"value": "userName eq \"Jane.doe\""
 								}
 							]
 						}
@@ -678,7 +678,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{server-myid}}/Users?filter=name.familyName eq \"Doe\"",
+							"raw": "{{server-myid}}/Users?filter=userName eq \"Jane.doe\"",
 							"host": [
 								"{{server-myid}}"
 							],
@@ -688,7 +688,7 @@
 							"query": [
 								{
 									"key": "filter",
-									"value": "name.familyName eq \"Doe\""
+									"value": "userName eq \"Jane.doe\""
 								}
 							]
 						}
@@ -853,13 +853,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{server-myid}}/users/Jane.doe",
+							"raw": "{{server-myid}}/users/75C10102-FF58-49B1-B93D-4D42C6AC521E",
 							"host": [
 								"{{server-myid}}"
 							],
 							"path": [
 								"users",
-								"Jane.doe"
+								"75C10102-FF58-49B1-B93D-4D42C6AC521E"
 							]
 						}
 					},
