@@ -560,96 +560,6 @@
 					"response": []
 				},
 				{
-					"name": "Edit Person",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"emails\": [{\r\n        \"value\": \"jane@doe.org\",\r\n        \"type\": \"home\"\r\n    }]\r\n} ",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{server-loki}}/users/Jane.doe",
-							"host": [
-								"{{server-loki}}"
-							],
-							"path": [
-								"users",
-								"Jane.doe"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Edit Person - myid",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"emails\": [{\r\n        \"value\": \"jane@doe.org\",\r\n        \"type\": \"home\"\r\n    }]\r\n} ",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{server-myid}}/users/75C10102-FF58-49B1-B93D-4D42C6AC521E",
-							"host": [
-								"{{server-myid}}"
-							],
-							"path": [
-								"users",
-								"75C10102-FF58-49B1-B93D-4D42C6AC521E"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Person",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{server-loki}}/users/Jane.doe",
-							"host": [
-								"{{server-loki}}"
-							],
-							"path": [
-								"users",
-								"Jane.doe"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Person - myid",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{server-myid}}/users/75C10102-FF58-49B1-B93D-4D42C6AC521E",
-							"host": [
-								"{{server-myid}}"
-							],
-							"path": [
-								"users",
-								"75C10102-FF58-49B1-B93D-4D42C6AC521E"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Find Person",
 					"request": {
 						"method": "GET",
@@ -690,6 +600,96 @@
 									"key": "filter",
 									"value": "userName eq \"Jane.doe\""
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Person",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"emails\": [{\r\n        \"value\": \"jane@doe.org\",\r\n        \"type\": \"home\"\r\n    }]\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-loki}}/users/Jane.doe",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"users",
+								"Jane.doe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Person - myid",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"emails\": [{\r\n        \"value\": \"jane@doe.org\",\r\n        \"type\": \"work\"\r\n    }]\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-myid}}/users/{{myid-user}}",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"users",
+								"{{myid-user}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Person",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-loki}}/users/Jane.doe",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"users",
+								"Jane.doe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Person - myid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-myid}}/users/{{myid-user}}",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"users",
+								"{{myid-user}}"
 							]
 						}
 					},
@@ -737,13 +737,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{server-myid}}/users/Jane.doe",
+							"raw": "{{server-myid}}/users/{{myid-user}}",
 							"host": [
 								"{{server-myid}}"
 							],
 							"path": [
 								"users",
-								"Jane.doe"
+								"{{myid-user}}"
 							]
 						}
 					},
@@ -791,13 +791,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{server-myid}}/users/Jane.doe",
+							"raw": "{{server-myid}}/users/{{myid-user}}",
 							"host": [
 								"{{server-myid}}"
 							],
 							"path": [
 								"users",
-								"Jane.doe"
+								"{{myid-user}}"
 							]
 						}
 					},
@@ -853,13 +853,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{server-myid}}/users/75C10102-FF58-49B1-B93D-4D42C6AC521E",
+							"raw": "{{server-myid}}/users/{{myid-user}}",
 							"host": [
 								"{{server-myid}}"
 							],
 							"path": [
 								"users",
-								"75C10102-FF58-49B1-B93D-4D42C6AC521E"
+								"{{myid-user}}"
 							]
 						}
 					},
@@ -980,6 +980,11 @@
 		{
 			"key": "server-loki",
 			"value": "http://localhost:8880",
+			"type": "string"
+		},
+		{
+			"key": "myid-user",
+			"value": "3F08CA25-E16B-433D-B787-AEA4D82CC23D",
 			"type": "string"
 		}
 	]
