@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "5fe5bada-6420-488e-935f-39ef6f5d6a93",
 		"name": "SCIM gateway",
+		"description": "myid-cardprofile needs to be the GUID of a credential profile that has been configured to issue to the Cardholder role.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23877104"
 	},
@@ -414,10 +415,40 @@
 					"response": []
 				},
 				{
-					"name": "Request Device ??",
+					"name": "Request Device - myid",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"credProfile\": {\r\n        \"id\": \"{{myid-credprofile}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-myid}}/users/{{myid-user}}",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"users",
+								"{{myid-user}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -595,6 +626,11 @@
 		{
 			"key": "myid-user",
 			"value": "3F08CA25-E16B-433D-B787-AEA4D82CC23D",
+			"type": "string"
+		},
+		{
+			"key": "myid-credprofile",
+			"value": "BEB1B7D7-0561-4E9B-A72F-3FB52FEE4CE9",
 			"type": "string"
 		}
 	]
