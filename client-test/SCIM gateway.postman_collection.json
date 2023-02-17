@@ -116,7 +116,7 @@
 			]
 		},
 		{
-			"name": "MyID Ops",
+			"name": "MyID Ops with SCIM server",
 			"item": [
 				{
 					"name": "Add User",
@@ -145,32 +145,6 @@
 					"response": []
 				},
 				{
-					"name": "Add Person - myid",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"externalId\": \"Jane.doe\", \r\n    \"userName\": \"Jane.doe\", \r\n    \"name\": { \r\n        \"givenName\":\"Jane\", \r\n        \"familyName\":\"Doe\" \r\n    }, \r\n    \"emails\": [{ \r\n        \"primary\": true, \r\n        \"value\": \"jane.doe@example.com\" \r\n    }], \r\n    \"active\": true \r\n} ",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{server-myid}}/users",
-							"host": [
-								"{{server-myid}}"
-							],
-							"path": [
-								"users"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Find User",
 					"request": {
 						"method": "GET",
@@ -179,29 +153,6 @@
 							"raw": "{{server-loki}}/Users?filter=userName eq \"Jane.doe\"",
 							"host": [
 								"{{server-loki}}"
-							],
-							"path": [
-								"Users"
-							],
-							"query": [
-								{
-									"key": "filter",
-									"value": "userName eq \"Jane.doe\""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Find Person - myid",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{server-myid}}/Users?filter=userName eq \"Jane.doe\"",
-							"host": [
-								"{{server-myid}}"
 							],
 							"path": [
 								"Users"
@@ -244,33 +195,6 @@
 					"response": []
 				},
 				{
-					"name": "Edit Person - myid",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"emails\": [{\r\n        \"value\": \"jane1@doe.org\",\r\n        \"type\": \"work\"\r\n    }]\r\n} ",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{server-myid}}/users/{{myid-user}}",
-							"host": [
-								"{{server-myid}}"
-							],
-							"path": [
-								"users",
-								"{{myid-user}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Get User",
 					"request": {
 						"method": "GET",
@@ -283,24 +207,6 @@
 							"path": [
 								"users",
 								"Jane.doe"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Person - myid",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{server-myid}}/users/{{myid-user}}",
-							"host": [
-								"{{server-myid}}"
-							],
-							"path": [
-								"users",
-								"{{myid-user}}"
 							]
 						}
 					},
@@ -334,33 +240,6 @@
 					"response": []
 				},
 				{
-					"name": "Disable Person - myid",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"active\": false\r\n} ",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{server-myid}}/users/{{myid-user}}",
-							"host": [
-								"{{server-myid}}"
-							],
-							"path": [
-								"users",
-								"{{myid-user}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Enable User",
 					"request": {
 						"method": "PUT",
@@ -388,7 +267,194 @@
 					"response": []
 				},
 				{
-					"name": "Enable Person - myid",
+					"name": "Remove User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"emails\": [{\r\n        \"value\": \"jane@doe.org\",\r\n        \"type\": \"home\"\r\n    }]\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-loki}}/users/Jane.doe",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"users",
+								"Jane.doe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Configs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-loki}}/ServiceProviderConfigs",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"ServiceProviderConfigs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Schemas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-loki}}/Schemas",
+							"host": [
+								"{{server-loki}}"
+							],
+							"path": [
+								"Schemas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MyID Ops with MyID Core API",
+			"item": [
+				{
+					"name": "Add Person",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"externalId\": \"Jane.doe\", \r\n    \"userName\": \"Jane.doe\", \r\n    \"name\": { \r\n        \"givenName\":\"Jane\", \r\n        \"familyName\":\"Doe\" \r\n    }, \r\n    \"emails\": [{ \r\n        \"primary\": true, \r\n        \"value\": \"jane.doe@example.com\" \r\n    }], \r\n    \"active\": true \r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-myid}}/users",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Person",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-myid}}/Users?filter=userName eq \"Jane.doe\"",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"Users"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "userName eq \"Jane.doe\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Person",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"emails\": [{\r\n        \"value\": \"jane1@doe.org\",\r\n        \"type\": \"work\"\r\n    }]\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-myid}}/users/{{myid-user}}",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"users",
+								"{{myid-user}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Person",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server-myid}}/users/{{myid-user}}",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"users",
+								"{{myid-user}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Disable Person",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"active\": false\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server-myid}}/users/{{myid-user}}",
+							"host": [
+								"{{server-myid}}"
+							],
+							"path": [
+								"users",
+								"{{myid-user}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enable Person",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -415,7 +481,7 @@
 					"response": []
 				},
 				{
-					"name": "Request Device - myid",
+					"name": "Request Device",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -453,34 +519,7 @@
 					"response": []
 				},
 				{
-					"name": "Remove User",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"emails\": [{\r\n        \"value\": \"jane@doe.org\",\r\n        \"type\": \"home\"\r\n    }]\r\n} ",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{server-loki}}/users/Jane.doe",
-							"host": [
-								"{{server-loki}}"
-							],
-							"path": [
-								"users",
-								"Jane.doe"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Remove Person - myid",
+					"name": "Remove Person",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -512,23 +551,6 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{server-loki}}/ServiceProviderConfigs",
-							"host": [
-								"{{server-loki}}"
-							],
-							"path": [
-								"ServiceProviderConfigs"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Configs - myid",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
 							"raw": "{{server-myid}}/ServiceProviderConfigs",
 							"host": [
 								"{{server-myid}}"
@@ -546,23 +568,6 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{server-loki}}/Schemas",
-							"host": [
-								"{{server-loki}}"
-							],
-							"path": [
-								"Schemas"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Schemas - myid",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
 							"raw": "{{server-myid}}/Schemas",
 							"host": [
 								"{{server-myid}}"
@@ -573,6 +578,66 @@
 						}
 					},
 					"response": []
+				}
+			],
+			"auth": {
+				"type": "oauth2",
+				"oauth2": [
+					{
+						"key": "scope",
+						"value": "myid.rest.basic",
+						"type": "string"
+					},
+					{
+						"key": "clientSecret",
+						"value": "{{secret}}",
+						"type": "string"
+					},
+					{
+						"key": "clientId",
+						"value": "{{clientID}}",
+						"type": "string"
+					},
+					{
+						"key": "accessTokenUrl",
+						"value": "{{server-oauth}}",
+						"type": "string"
+					},
+					{
+						"key": "grant_type",
+						"value": "client_credentials",
+						"type": "string"
+					},
+					{
+						"key": "tokenName",
+						"value": "scim-token",
+						"type": "string"
+					},
+					{
+						"key": "addTokenTo",
+						"value": "header",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		}
@@ -632,6 +697,10 @@
 			"key": "myid-credprofile",
 			"value": "BEB1B7D7-0561-4E9B-A72F-3FB52FEE4CE9",
 			"type": "string"
+		},
+		{
+			"key": "server-oauth",
+			"value": "https://react.domain31.local/web.oauth2/connect/token"
 		}
 	]
 }

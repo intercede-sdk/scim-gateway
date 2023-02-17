@@ -17,47 +17,11 @@
       "customMasking": null
     },
     "auth": {
-      "basic": [
-        {
-          "username": "gwadmin",
-          "password": "MGM5OGE5ZjEyOWY4MDYxY2MzNGRiMjgwODQ0MTNlNWU6NWI3Mjg4NGU2ODNmNjM4YWJkNzRlNWZjZDZhMmRkYzU=",
-          "readOnly": false,
-          "baseEntities": []
-        }
-      ],
-      "bearerToken": [
-        {
-          "token": null,
-          "readOnly": false,
-          "baseEntities": []
-        }
-      ],
-      "bearerJwtAzure": [
-        {
-          "tenantIdGUID": null,
-          "readOnly": false,
-          "baseEntities": []
-        }
-      ],
-      "bearerJwt": [
-        {
-          "secret": null,
-          "publicKey": null,
-          "options": {
-            "issuer": null
-          },
-          "readOnly": false,
-          "baseEntities": []
-        }
-      ],
-      "bearerOAuth": [
-        {
-          "client_id": null,
-          "client_secret": null,
-          "readOnly": false,
-          "baseEntities": []
-        }
-      ]
+      "passThrough": {
+        "enabled": true,
+        "readOnly": false,
+        "baseEntities": []
+      }
     },
     "certificate": {
       "key": null,
@@ -91,8 +55,6 @@
           "https://react.domain31.local/rest.core/api"
         ],
         "scimVersion": "2.0",
-        "username": "gwadmin",
-        "password": "MDMwZjAwMWE0NGZiMTY3N2MwMzZmNTgzZTM3YjRmYTM6YjEyMTY5MTNmYzhlZWQ5MTMzMmI5YTVmNWY3YWEyMTI=",
         "proxy": {
           "host": null,
           "username": null,
