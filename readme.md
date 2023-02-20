@@ -8,7 +8,7 @@ Note that implementation of MyID Core API connectivity is with plugin-scim, and 
 
 # Requirements
 
-MyID Core API authentication needs to be turned off for testing (`MyID.Auth.AnonymousAccess = true` in _rest.core/appSettings.json_)
+Pass-through authentication is used, so the bearer token that would be used to access the MyID Core API needs to be sent to this web service.
 
 Start with `npm run dev` (when developing) or `npm start` to launch two webservices:
 
