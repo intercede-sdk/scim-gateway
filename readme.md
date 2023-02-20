@@ -10,6 +10,8 @@ Note that implementation of MyID Core API connectivity is with plugin-scim, and 
 
 Pass-through authentication is used, so the bearer token that would be used to access the MyID Core API needs to be sent to this web service.
 
+The `defaultGroup` object in _plugin-scim.js_ needs to be updated so that it provides the name/GUID details of the group within MyID that any new users are added to.
+
 Start with `npm run dev` (when developing) or `npm start` to launch two webservices:
 
 - localhost:8880 - plugin-loki - supports SCIM requests
