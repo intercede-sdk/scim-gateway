@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "5fe5bada-6420-488e-935f-39ef6f5d6a93",
 		"name": "SCIM gateway",
-		"description": "myid-cardprofile needs to be the GUID of a credential profile that has been configured to issue to the Cardholder role.",
+		"description": "myid-cardprofile needs to be the GUID of a credential profile that has been configured to issue to the Cardholder role.\n\nNote basic auth is used for \"local SCIM server\" - using Loki\n\nOAuth2.0 authentication used for \"MyID Ops with MyID Core API\"",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23877104"
 	},
@@ -339,7 +339,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"externalId\": \"Jane.doe\", \r\n    \"userName\": \"Jane.doe\", \r\n    \"name\": { \r\n        \"givenName\":\"Jane\", \r\n        \"familyName\":\"Doe\" \r\n    }, \r\n    \"emails\": [{ \r\n        \"primary\": true, \r\n        \"value\": \"jane.doe@example.com\" \r\n    }], \r\n    \"active\": true \r\n} ",
+							"raw": "{\r\n    \"schemas\": [\r\n        \"urn:ietf:params:scim:schemas:core:2.0:User\"\r\n    ],\r\n    \"externalId\": \"Jane.doe\",\r\n    \"userName\": \"Jane.doe\",\r\n    \"name\": {\r\n        \"givenName\": \"Jane\",\r\n        \"familyName\": \"Doe\"\r\n    },\r\n    \"emails\": [\r\n        {\r\n            \"primary\": true,\r\n            \"value\": \"jane.doe@example.com\"\r\n        }\r\n    ],\r\n    \"roles\": [\r\n        {\r\n            \"value\": \"Cardholder\",\r\n            \"type\": \"self\"\r\n        },\r\n        {\r\n            \"value\": \"Applicant\",\r\n            \"type\": \"department\"\r\n        }\r\n    ],\r\n    \"active\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -388,7 +388,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"emails\": [{\r\n        \"value\": \"jane1@doe.org\",\r\n        \"type\": \"work\"\r\n    }]\r\n} ",
+							"raw": "{ \r\n    \"schemas\": [\"urn:ietf:params:scim:schemas:core:2.0:User\"],\r\n    \"emails\": [{\r\n        \"value\": \"jane2@doe.org\",\r\n        \"type\": \"work\"\r\n    }],\r\n    \"roles\": [\r\n        {\r\n            \"value\": \"Applicant\",\r\n            \"type\": \"self\"\r\n        }\r\n    ]\r\n} ",
 							"options": {
 								"raw": {
 									"language": "json"
